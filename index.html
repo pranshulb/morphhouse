@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Morph House — Winter House Experiment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The Morph House is a small winter house experiment on the outskirts of East London, 22 Dec – 10 Jan, for people who want to think, make, and wander down rabbit holes together." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --text: #2a2a2a;
+      --text-light: #5a5a5a;
+      --text-muted: #8a8a8a;
+      --bg: #faf8f5;
+      --bg-warm: #fefcf9;
+      --border: #ddd8d0;
+      --accent: #2a2a2a;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Crimson Text", Georgia, serif;
+      font-weight: 400;
+      line-height: 1.75;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 24px;
+      }
+    }
+
+    /* Header */
+    header {
+      padding: 100px 0 140px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 60px 0 80px;
+      }
+    }
+
+    .eyebrow {
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      font-weight: 400;
+    }
+
+    h1 {
+      font-size: clamp(52px, 9vw, 84px);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 32px;
+      letter-spacing: -0.01em;
+      font-style: italic;
+    }
+
+    .subtitle {
+      font-size: clamp(20px, 2.8vw, 26px);
+      font-weight: 400;
+      color: var(--text-light);
+      line-height: 1.6;
+      max-width: 750px;
+      font-style: italic;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(250, 248, 245, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 24px 0;
+    }
+
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 400;
+      font-family: "Inter", sans-serif;
+      transition: opacity 0.2s;
+      font-style: italic;
+    }
+
+    nav a:hover {
+      opacity: 0.6;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        gap: 20px;
+      }
+      nav a {
+        font-size: 13px;
+      }
+    }
+
+    /* Sections */
+    section {
+      padding: 120px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section:last-child {
+      border-bottom: none;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 60px 0;
+      }
+    }
+
+    h2 {
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 48px;
+      letter-spacing: -0.01em;
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      h2 {
+        margin-bottom: 32px;
+      }
+    }
+
+    p {
+      font-size: 20px;
+      line-height: 1.85;
+      margin-bottom: 28px;
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    @media (max-width: 768px) {
+      p {
+        font-size: 18px;
+      }
+      h1 {
+        font-size: clamp(42px, 10vw, 64px);
+      }
+      h2 {
+        font-size: clamp(32px, 8vw, 48px);
+      }
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 80px;
+      margin-top: 48px;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .two-col {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    .muted {
+      color: var(--text-muted);
+      font-size: 18px;
+      font-style: italic;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      .muted {
+        font-size: 15px;
+      }
+    }
+
+    /* Sidebar box */
+    .sidebar-box {
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      padding: 40px 36px;
+      border-radius: 0;
+      position: relative;
+      margin-top: 8px;
+    }
+
+    .sidebar-box::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      right: -1px;
+      height: 3px;
+      background: var(--text);
+    }
+
+    @media (max-width: 768px) {
+      .sidebar-box {
+        padding: 24px;
+      }
+    }
+
+    .sidebar-box h3 {
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 24px;
+      color: var(--text-muted);
+    }
+
+    .sidebar-box ul {
+      list-style: none;
+    }
+
+    .sidebar-box li {
+      font-size: 18px;
+      line-height: 1.85;
+      margin-bottom: 16px;
+      padding-left: 24px;
+      position: relative;
+    }
+
+    .sidebar-box li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--text);
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .sidebar-box p {
+      font-size: 17px;
+      margin-top: 24px;
+      margin-bottom: 0;
+    }
+
+    /* Tags */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .tag {
+      font-family: "Inter", sans-serif;
+      font-size: 13px;
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      background: var(--bg-warm);
+      border-radius: 0;
+      font-weight: 400;
+      color: var(--text);
+      font-style: italic;
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .grid-item {
+      border: 1px solid var(--border);
+      padding: 32px 28px;
+      background: var(--bg-warm);
+      position: relative;
+    }
+
+    .grid-item::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--text);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .grid-item:hover::after {
+      opacity: 0.3;
+    }
+
+    @media (max-width: 768px) {
+      .grid-item {
+        padding: 20px;
+      }
+    }
+
+    .grid-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .grid-item > div:not(.grid-label):not(.grid-note) {
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .grid-note {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    /* Form */
+    form {
+      margin-top: 40px;
+      max-width: 700px;
+    }
+
+    .field {
+      margin-bottom: 32px;
+    }
+
+    label {
+      display: block;
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 10px;
+      color: var(--text);
+      font-family: "Inter", sans-serif;
+    }
+
+    label span {
+      color: var(--text-muted);
+      font-weight: 300;
+      font-size: 13px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 16px 18px;
+      border: 1px solid var(--border);
+      background: var(--bg-warm);
+      font-family: "Crimson Text", serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text);
+      transition: border-color 0.2s;
+      border-radius: 0;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--text);
+      background: white;
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+      line-height: 1.75;
+    }
+
+    .checkbox-field {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .checkbox-field input[type="checkbox"] {
+      margin-top: 4px;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: var(--text);
+    }
+
+    .checkbox-field label {
+      font-size: 17px;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .form-footer {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    button {
+      background: var(--text);
+      color: white;
+      border: none;
+      padding: 18px 36px;
+      font-size: 17px;
+      font-weight: 400;
+      font-family: "Inter", sans-serif;
+      cursor: pointer;
+      transition: all 0.2s;
+      border-radius: 0;
+      width: fit-content;
+      font-style: italic;
+      letter-spacing: 0.5px;
+    }
+
+    button:hover {
+      opacity: 0.85;
+      transform: translateY(-1px);
+    }
+
+    .helper {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-style: italic;
+      max-width: 500px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 60px 0;
+      border-top: 1px solid var(--border);
+      margin-top: 100px;
+    }
+
+    @media (max-width: 768px) {
+      footer {
+        padding: 40px 0;
+        margin-top: 60px;
+      }
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    footer p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    footer a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--text);
+      transition: opacity 0.2s;
+    }
+
+    footer a:hover {
+      opacity: 0.6;
+    }
+
+    /* Links */
+    a {
+      color: var(--text);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      transition: opacity 0.2s;
+    }
+
+    a:hover {
+      opacity: 0.6;
+    }
+
+    /* Lists */
+    ul {
+      list-style: none;
+      margin: 24px 0;
+    }
+
+    li {
+      font-size: 20px;
+      line-height: 1.85;
+      margin-bottom: 16px;
+      padding-left: 28px;
+      position: relative;
+    }
+
+    @media (max-width: 768px) {
+      li {
+        font-size: 16px;
+      }
+    }
+
+    li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--text);
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    strong {
+      font-weight: 600;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <a href="#top">the morph house</a>
+      <div class="nav-links">
+        <a href="#about">about</a>
+        <a href="#people">people</a>
+        <a href="#practicalities">practicalities</a>
+        <a href="#apply">apply</a>
+      </div>
+    </div>
+  </nav>
+
+  <header id="top">
+    <div class="container">
+      <div class="eyebrow">winter house experiment</div>
+      <h1>The Morph House</h1>
+      <p class="subtitle">
+        22 december – 10 january · outskirts of east london · 4–5 people · free to stay · hosted by pranshul
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <div class="container">
+        <h2>What this is</h2>
+        <div class="two-col">
+          <div>
+            <p>
+              the morph house is a winter experiment i'm running (hi, i'm pranshul): a few weeks in a shared house
+              where people can actually give time to the things they care about, without needing to perform or "build fast".
+              this is a space to work on passion projects, like for interests you've been wanting to pursue for a long time but didn't have the time.
+            </p>
+            <p>
+              for a while, a regular house on the edge of east london becomes a soft studio for ideas:
+              people writing at the kitchen table, reading on the sofa, playing with code or paint,
+              going for cold walks, and going down rabbit holes together.
+            </p>
+            <p class="muted">
+              there is no strict programme. just gentle structure, shared meals, and a group of people each
+              tending to something that matters to them.
+            </p>
+          </div>
+          <div>
+            <div class="sidebar-box">
+              <h3>Some things you might do here</h3>
+              <ul>
+                <li>work on drawings, writing, research, music, philosophy, maths, or something in-between.</li>
+                <li>develop a small idea: a zine, a talk, a tiny game, a thought-through essay.</li>
+                <li>explore a topic properly: a question, a field, a weird niche you've been circling.</li>
+                <li>gently reconnect with your thinking / creative self after a messy year.</li>
+              </ul>
+              <p class="muted">
+                you do not need a perfectly defined "project". a direction, question, or hunch is enough.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="people">
+      <div class="container">
+        <h2>People & culture</h2>
+        <div class="two-col">
+          <div>
+            <p>
+              this is meant to be an interdisciplinary house. you're welcome whether you come from art,
+              philosophy, maths, science, social sciences, movement, community work, design, writing,
+              or none of those boxes.
+            </p>
+            <p>
+              the main thing is that you care about ideas or making things, and you're up for living gently
+              with other humans while you do that.
+            </p>
+            <p class="muted">
+              this is <strong>not</strong> a tech "builder house", startup incubator, or productivity bootcamp.
+              laptops are fine; pitch decks are not the point.
+            </p>
+          </div>
+          <div>
+            <p class="muted">
+              you don't need a portfolio, followers, or an art school background. curiosity, kindness,
+              and respect for the house are the important bits.
+            </p>
+            <div class="tags">
+              <span class="tag">interdisciplinary</span>
+              <span class="tag">not a tech bro house</span>
+              <span class="tag">low-ego</span>
+              <span class="tag">curious & kind</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="practicalities">
+      <div class="container">
+        <h2>Practicalities</h2>
+        <div class="grid">
+          <div class="grid-item">
+            <div class="grid-label">dates</div>
+            <div>22 december → 10 january</div>
+            <div class="grid-note">
+              you don't have to stay the whole time, but i'll prioritise people who can be here most days.
+            </div>
+          </div>
+          <div class="grid-item">
+            <div class="grid-label">place</div>
+            <div>outskirts of east london</div>
+            <div class="grid-note">
+              exact address shared after acceptance. quiet enough to think, reachable by public transport.
+            </div>
+          </div>
+          <div class="grid-item">
+            <div class="grid-label">people</div>
+            <div>4–5 residents</div>
+            <div class="grid-note">
+              shared rooms. i'll try to match needs and rhythms.
+            </div>
+          </div>
+          <div class="grid-item">
+            <div class="grid-label">money</div>
+            <div>free to stay</div>
+            <div class="grid-note">
+              we share the cost of groceries and basics.
+            </div>
+          </div>
+          <div class="grid-item">
+            <div class="grid-label">rhythm</div>
+            <div>days for making, nights for sharing</div>
+            <div class="grid-note">
+              loose co-working, check-ins, optional walks and games — not a grind culture space.
+            </div>
+          </div>
+          <div class="grid-item">
+            <div class="grid-label">house norms</div>
+            <div>clean, gentle, low-drama</div>
+            <div class="grid-note">
+              shared chores, quiet-ish nights, respect for energy levels and access needs.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="apply">
+      <div class="container">
+        <h2>Apply</h2>
+        <p>
+          applications are read on a rolling basis until the house is full.
+          please be informal and write as much as you like—the objective is for me to get to know you.
+        </p>
+
+        <form id="application-form" onsubmit="handleSubmit(event)">
+          <div class="field">
+            <label>
+              name <span>(required)</span>
+            </label>
+            <input type="text" name="name" id="name" required />
+          </div>
+
+          <div class="field">
+            <label>
+              email <span>(we'll contact you here)</span>
+            </label>
+            <input type="email" name="email" id="email" required />
+          </div>
+
+          <div class="field">
+            <label>
+              where are you based? <span>(city / country)</span>
+            </label>
+            <input type="text" name="location" id="location" />
+          </div>
+
+          <div class="field">
+            <label>
+              links <span>(optional — share any work, any creative things you've made)</span>
+            </label>
+            <input type="text" name="links" id="links" placeholder="links to your work or creative projects" />
+          </div>
+
+          <div class="field">
+            <label>
+              what would you like to explore at the morph house?
+              <span>(it can be anything, any vague idea or direction is okay)</span>
+            </label>
+            <textarea name="project" id="project" required></textarea>
+          </div>
+
+          <div class="field">
+            <label>
+              why do you want to come to morph house?
+            </label>
+            <textarea name="why" id="why"></textarea>
+          </div>
+
+          <div class="field">
+            <label>
+              how do you like to live with other people?
+              <span>(sleep, noise, rituals, access needs, boundaries)</span>
+            </label>
+            <textarea name="living" id="living"></textarea>
+          </div>
+
+          <div class="field">
+            <label>
+              anything else you want me to know? <span>(optional)</span>
+            </label>
+            <textarea name="extra" id="extra"></textarea>
+          </div>
+
+          <div class="checkbox-field">
+            <input type="checkbox" id="norms" name="norms" required />
+            <label for="norms">
+              i'm happy to follow basic house norms:
+              shared chores, respect for quiet space, and kindness by default (especially in winter).
+            </label>
+          </div>
+
+          <div class="form-footer">
+            <button type="submit">submit application</button>
+            <p class="helper">
+              if the house is already full, i may ask to keep your details for future morph house experiments.
+            </p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>the morph house · outskirts of east london · 22 dec – 10 jan</p>
+      <p>questions? <a href="mailto:pranshulbohra@gmail.com">email pranshul</a></p>
+    </div>
+  </footer>
+
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+      
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        location: document.getElementById('location').value,
+        links: document.getElementById('links').value,
+        project: document.getElementById('project').value,
+        why: document.getElementById('why').value,
+        living: document.getElementById('living').value,
+        extra: document.getElementById('extra').value
+      };
+      
+      const subject = encodeURIComponent('Morph House Application');
+      
+      let body = `Name: ${formData.name}\n`;
+      body += `Email: ${formData.email}\n`;
+      if (formData.location) body += `Location: ${formData.location}\n`;
+      if (formData.links) body += `Links: ${formData.links}\n`;
+      body += `\nWhat would you like to explore at the morph house?\n${formData.project}\n`;
+      if (formData.why) {
+        body += `\nWhy do you want to come to morph house?\n${formData.why}\n`;
+      }
+      if (formData.living) {
+        body += `\nHow do you like to live with other people?\n${formData.living}\n`;
+      }
+      if (formData.extra) {
+        body += `\nAnything else:\n${formData.extra}\n`;
+      }
+      
+      window.location.href = `mailto:pranshulbohra@gmail.com?subject=${subject}&body=${encodeURIComponent(body)}`;
+    }
+  </script>
+</body>
+</html>
