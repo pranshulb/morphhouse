@@ -49,6 +49,13 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
+    /* extra space for fixed nav on phones */
+    @media (max-width: 768px) {
+      body {
+        padding-top: 72px;
+      }
+    }
+
     .container {
       max-width: 900px;
       margin: 0 auto;
@@ -172,6 +179,12 @@
       section {
         padding: 60px 0;
       }
+    }
+
+    /* make sure anchors scroll below nav */
+    header,
+    section {
+      scroll-margin-top: 90px;
     }
 
     h2 {
@@ -784,19 +797,17 @@
           <div class="host-label">host note</div>
           <p>
             hi, this is pranshul! right now i'm in my 2nd year studying philosophy in edinburgh, with a past life
-            in physics/maths. i love meeting new people and bringing cool people together: i organise
+            in physics/maths. i love meeting new people and bringing cool people together: i organised
             <a href="https://ensemble.rodeo/" target="_blank" rel="noopener noreferrer">ensemble</a>,
             and i run <a href="https://eaedinburgh.com/" target="_blank" rel="noopener noreferrer">effective altruism edinburgh</a>.
           </p>
           <p>
-            in my free time, i dance salsa/bachata, i basketball, i quadball (yes, quidditch!), i read
-            (come talk to me about any fantasy book, i've probably read it:) ), and im trying to start blogging (ive atleast a dozen unpublished drafts!). i'm also into meditation:
-            i've been to a couple of retreats for the buddhist meditation
-            <a href="https://www.dhamma.org/" target="_blank" rel="noopener noreferrer">vipassana</a>.
-	</p>
-	<p>
-	    i'm really excited
-            to meet you all very soon and to see what we make together!
+            in my free time, i dance salsa/bachata, i basketball, i quadball (yes, quidditch!), and i read
+            (come talk to me about any fantasy book, i've probably read it). i'm also into meditation:
+            i've been to a couple of retreats for the buddhist meditation vipassana
+            (<a href="https://www.dhamma.org/" target="_blank" rel="noopener noreferrer">dhamma.org</a>),
+            which might be the most powerful non-drug tool for the mind i've come across yet. i'm really excited
+            to meet whoever ends up in this house and see what we make together.
           </p>
         </div>
       </div>
