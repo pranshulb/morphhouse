@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>The Morph House — Winter House Experiment</title>
+  <title>The Morph House</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The Morph House is a small winter house experiment on the outskirts of East London, 22 Dec – 10 Jan, for people who want to think, make, and wander down rabbit holes together." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E✶%3C/text%3E%3C/svg%3E">
+  <link rel="alternate icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E✶%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -19,10 +21,14 @@
       --text: #2a2a2a;
       --text-light: #5a5a5a;
       --text-muted: #8a8a8a;
-      --bg: #faf8f5;
-      --bg-warm: #fefcf9;
-      --border: #ddd8d0;
-      --accent: #2a2a2a;
+      --bg: #fdf7f2;
+      --bg-warm: #fefaf5;
+      --border: #ddd0c2;
+      --accent-rose: #f2b9b0;
+      --accent-gold: #f3d49a;
+      --accent-blue: #c5d7f6;
+      --accent-lilac: #d9c4f0;
+      --button: #2c363f;
     }
 
     html {
@@ -34,7 +40,11 @@
       font-weight: 400;
       line-height: 1.75;
       color: var(--text);
-      background: var(--bg);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(244, 212, 154, 0.55) 0, transparent 52%),
+        radial-gradient(circle at 100% 0%, rgba(197, 215, 246, 0.55) 0, transparent 50%),
+        radial-gradient(circle at 0% 100%, rgba(242, 185, 176, 0.45) 0, transparent 55%),
+        linear-gradient(to bottom, #fdf7f2, #f7f1ea);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
@@ -54,7 +64,10 @@
     /* Header */
     header {
       padding: 100px 0 140px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid rgba(221, 208, 194, 0.8);
+      background: radial-gradient(circle at top, rgba(197, 215, 246, 0.45) 0, transparent 55%);
+      position: relative;
+      overflow: hidden;
     }
 
     @media (max-width: 768px) {
@@ -89,6 +102,10 @@
       line-height: 1.6;
       max-width: 750px;
       font-style: italic;
+      background: rgba(255, 255, 255, 0.75);
+      display: inline-block;
+      padding: 8px 10px 6px;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.04);
     }
 
     /* Navigation */
@@ -97,11 +114,11 @@
       top: 0;
       left: 0;
       right: 0;
-      background: rgba(250, 248, 245, 0.85);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
+      background: rgba(253, 247, 242, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(221, 208, 194, 0.9);
       z-index: 100;
-      padding: 24px 0;
+      padding: 20px 0;
     }
 
     nav .container {
@@ -116,12 +133,13 @@
       font-size: 15px;
       font-weight: 400;
       font-family: "Inter", sans-serif;
-      transition: opacity 0.2s;
+      transition: opacity 0.2s, color 0.2s;
       font-style: italic;
     }
 
     nav a:hover {
-      opacity: 0.6;
+      opacity: 0.7;
+      color: #6b4a40;
     }
 
     .nav-links {
@@ -141,7 +159,19 @@
     /* Sections */
     section {
       padding: 120px 0;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid rgba(221, 208, 194, 0.8);
+      background: rgba(254, 250, 245, 0.96);
+      position: relative;
+      overflow: hidden;
+    }
+
+    section:nth-of-type(2n) {
+      background: linear-gradient(
+        to right,
+        rgba(242, 185, 176, 0.12),
+        rgba(254, 250, 245, 0.96),
+        rgba(197, 215, 246, 0.14)
+      );
     }
 
     section:last-child {
@@ -161,6 +191,26 @@
       margin-bottom: 48px;
       letter-spacing: -0.01em;
       font-style: italic;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 64px;
+      height: 4px;
+      border-radius: 999px;
+      background: linear-gradient(
+        90deg,
+        var(--accent-rose),
+        var(--accent-gold),
+        var(--accent-blue),
+        var(--accent-lilac)
+      );
+      opacity: 0.75;
     }
 
     @media (max-width: 768px) {
@@ -219,12 +269,13 @@
 
     /* Sidebar box */
     .sidebar-box {
-      background: var(--bg-warm);
-      border: 1px solid var(--border);
+      background: linear-gradient(135deg, #fefaf5, #f8e8da);
+      border: 1px solid rgba(221, 208, 194, 0.9);
       padding: 40px 36px;
       border-radius: 0;
       position: relative;
       margin-top: 8px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.04);
     }
 
     .sidebar-box::before {
@@ -234,7 +285,7 @@
       left: -1px;
       right: -1px;
       height: 3px;
-      background: var(--text);
+      background: linear-gradient(90deg, var(--accent-rose), var(--accent-gold));
     }
 
     @media (max-width: 768px) {
@@ -269,7 +320,7 @@
       content: "•";
       position: absolute;
       left: 0;
-      color: var(--text);
+      color: #844b3c;
       font-size: 20px;
       line-height: 1;
     }
@@ -292,12 +343,25 @@
       font-family: "Inter", sans-serif;
       font-size: 13px;
       padding: 8px 16px;
-      border: 1px solid var(--border);
-      background: var(--bg-warm);
-      border-radius: 0;
+      border-radius: 999px;
       font-weight: 400;
       color: var(--text);
       font-style: italic;
+      border: 1px solid rgba(221, 208, 194, 0.9);
+      background: #fefaf5;
+    }
+
+    .tag:nth-child(1) {
+      background: rgba(197, 215, 246, 0.55);
+    }
+    .tag:nth-child(2) {
+      background: rgba(242, 185, 176, 0.55);
+    }
+    .tag:nth-child(3) {
+      background: rgba(243, 212, 154, 0.55);
+    }
+    .tag:nth-child(4) {
+      background: rgba(217, 196, 240, 0.55);
     }
 
     /* Grid */
@@ -322,10 +386,19 @@
     }
 
     .grid-item {
-      border: 1px solid var(--border);
+      border: 1px solid rgba(221, 208, 194, 0.95);
       padding: 32px 28px;
-      background: var(--bg-warm);
+      background: #fefaf5;
       position: relative;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.03);
+    }
+
+    .grid-item:nth-child(2n) {
+      background: linear-gradient(135deg, #fefaf5, rgba(197, 215, 246, 0.3));
+    }
+
+    .grid-item:nth-child(3n) {
+      background: linear-gradient(135deg, #fefaf5, rgba(243, 212, 154, 0.28));
     }
 
     .grid-item::after {
@@ -335,13 +408,13 @@
       left: 0;
       right: 0;
       height: 2px;
-      background: var(--text);
+      background: linear-gradient(90deg, var(--accent-rose), var(--accent-gold), var(--accent-blue));
       opacity: 0;
       transition: opacity 0.2s;
     }
 
     .grid-item:hover::after {
-      opacity: 0.3;
+      opacity: 0.9;
     }
 
     @media (max-width: 768px) {
@@ -403,13 +476,13 @@
     textarea {
       width: 100%;
       padding: 16px 18px;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(221, 208, 194, 0.95);
       background: var(--bg-warm);
       font-family: "Crimson Text", serif;
       font-size: 18px;
       font-weight: 400;
       color: var(--text);
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
       border-radius: 0;
     }
 
@@ -417,8 +490,9 @@
     input[type="email"]:focus,
     textarea:focus {
       outline: none;
-      border-color: var(--text);
-      background: white;
+      border-color: #8b5c4c;
+      background: #ffffff;
+      box-shadow: 0 0 0 1px rgba(139, 92, 80, 0.2);
     }
 
     textarea {
@@ -439,7 +513,7 @@
       width: 18px;
       height: 18px;
       cursor: pointer;
-      accent-color: var(--text);
+      accent-color: #8b5c4c;
     }
 
     .checkbox-field label {
@@ -456,7 +530,7 @@
     }
 
     button {
-      background: var(--text);
+      background: var(--button);
       color: white;
       border: none;
       padding: 18px 36px;
@@ -465,15 +539,17 @@
       font-family: "Inter", sans-serif;
       cursor: pointer;
       transition: all 0.2s;
-      border-radius: 0;
+      border-radius: 999px;
       width: fit-content;
       font-style: italic;
       letter-spacing: 0.5px;
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.15);
     }
 
     button:hover {
-      opacity: 0.85;
+      opacity: 0.93;
       transform: translateY(-1px);
+      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.18);
     }
 
     .helper {
@@ -486,8 +562,9 @@
     /* Footer */
     footer {
       padding: 60px 0;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid rgba(221, 208, 194, 0.85);
       margin-top: 100px;
+      background: radial-gradient(circle at bottom, rgba(217, 196, 240, 0.35), #fdf7f2 55%);
     }
 
     @media (max-width: 768px) {
@@ -515,11 +592,12 @@
       color: var(--text);
       text-decoration: none;
       border-bottom: 1px solid var(--text);
-      transition: opacity 0.2s;
+      transition: opacity 0.2s, color 0.2s;
     }
 
     footer a:hover {
-      opacity: 0.6;
+      opacity: 0.75;
+      color: #6b4a40;
     }
 
     /* Links */
@@ -528,11 +606,12 @@
       text-decoration: underline;
       text-decoration-thickness: 1px;
       text-underline-offset: 3px;
-      transition: opacity 0.2s;
+      transition: opacity 0.2s, color 0.2s;
     }
 
     a:hover {
-      opacity: 0.6;
+      opacity: 0.7;
+      color: #6b4a40;
     }
 
     /* Lists */
@@ -568,6 +647,128 @@
       font-weight: 600;
       font-style: italic;
     }
+
+    /* Hand-drawn illustrations */
+    .sketch {
+      position: absolute;
+      opacity: 0.15;
+      pointer-events: none;
+      stroke: var(--text);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    header .sketch-house {
+      top: 20%;
+      right: 5%;
+      width: 120px;
+      height: 120px;
+      opacity: 0.14;
+    }
+
+    @media (max-width: 768px) {
+      header .sketch-house {
+        width: 80px;
+        height: 80px;
+        top: 15%;
+        right: 3%;
+      }
+    }
+
+    .sketch-divider {
+      bottom: 0;
+      left: 10%;
+      width: 200px;
+      height: 60px;
+      opacity: 0.12;
+    }
+
+    @media (max-width: 768px) {
+      .sketch-divider {
+        width: 120px;
+        height: 40px;
+        left: 5%;
+      }
+    }
+
+    .sketch-corner {
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      opacity: 0.1;
+    }
+
+    .sidebar-box {
+      position: relative;
+    }
+
+    /* Colourful squiggles */
+    .squiggle {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.35;
+    }
+
+    .squiggle path {
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    .squiggle-1 {
+      top: 65%;
+      left: -40px;
+      width: 160px;
+      height: 90px;
+      color: var(--accent-rose);
+      transform: rotate(-5deg);
+    }
+
+    .squiggle-2 {
+      top: 10%;
+      right: -50px;
+      width: 180px;
+      height: 100px;
+      color: var(--accent-blue);
+      transform: rotate(4deg);
+    }
+
+    .squiggle-3 {
+      bottom: -40px;
+      left: 50%;
+      width: 200px;
+      height: 90px;
+      color: var(--accent-gold);
+      transform: translateX(-50%) rotate(-3deg);
+    }
+
+    .squiggle-4 {
+      top: -30px;
+      left: 5%;
+      width: 160px;
+      height: 80px;
+      color: var(--accent-lilac);
+      transform: rotate(6deg);
+    }
+
+    @media (max-width: 768px) {
+      .squiggle-1,
+      .squiggle-2,
+      .squiggle-3,
+      .squiggle-4 {
+        opacity: 0.28;
+        transform: translateX(0) scale(0.8);
+      }
+      .squiggle-1 { left: -20px; }
+      .squiggle-2 { right: -30px; }
+      .squiggle-3 { bottom: -30px; }
+      .squiggle-4 { top: -20px; }
+    }
   </style>
 </head>
 <body>
@@ -585,24 +786,52 @@
 
   <header id="top">
     <div class="container">
+      <svg class="sketch sketch-house" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <!-- Simple house sketch -->
+        <path d="M30 70 L30 50 L50 35 L70 50 L70 70 Z"/>
+        <path d="M30 70 L70 70"/>
+        <path d="M50 35 L50 70"/>
+        <path d="M40 70 L40 60 L45 60 L45 70"/>
+        <path d="M55 70 L55 60 L60 60 L60 70"/>
+        <circle cx="50" cy="50" r="3" opacity="0.3"/>
+      </svg>
+
+      <!-- colourful squiggle in header -->
+      <svg class="sketch squiggle squiggle-1" viewBox="0 0 160 90" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 60 Q40 10, 80 40 T155 35" />
+      </svg>
+
       <div class="eyebrow">winter house experiment</div>
       <h1>The Morph House</h1>
       <p class="subtitle">
-        22 december – 10 january · outskirts of east london · 4–5 people · free to stay · hosted by pranshul
+        22 december – 10 january · outskirts of east london · 4–5 people · funded accommodation · hosted by pranshul
       </p>
     </div>
   </header>
 
   <main>
     <section id="about">
+      <svg class="sketch sketch-divider" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+        <!-- Decorative line sketch -->
+        <path d="M10 30 Q50 10, 90 30 T170 30"/>
+        <path d="M20 40 Q60 20, 100 40 T180 40"/>
+        <circle cx="15" cy="25" r="2" opacity="0.4"/>
+        <circle cx="185" cy="35" r="1.5" opacity="0.4"/>
+      </svg>
+
+      <!-- colourful squiggle in about -->
+      <svg class="sketch squiggle squiggle-2" viewBox="0 0 180 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 50 Q55 5, 100 40 T170 35" />
+      </svg>
+
       <div class="container">
         <h2>What this is</h2>
         <div class="two-col">
           <div>
             <p>
-              the morph house is a winter experiment i'm running (hi, i'm pranshul): a few weeks in a shared house
+              the morph house is a winter experiment i'm running: a few weeks in a shared house
               where people can actually give time to the things they care about, without needing to perform or "build fast".
-              this is a space to work on passion projects, like for interests you've been wanting to pursue for a long time but didn't have the time.
+              this is a space to work on passion projects—those interests you've been wanting to pursue for a long time but didn't have the time.
             </p>
             <p>
               for a while, a regular house on the edge of east london becomes a soft studio for ideas:
@@ -616,6 +845,11 @@
           </div>
           <div>
             <div class="sidebar-box">
+              <svg class="sketch sketch-corner" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                <!-- Corner decoration -->
+                <path d="M10 10 L10 20 Q10 25, 15 25 L25 25"/>
+                <path d="M50 10 L50 20 Q50 25, 45 25 L35 25"/>
+              </svg>
               <h3>Some things you might do here</h3>
               <ul>
                 <li>work on drawings, writing, research, music, philosophy, maths, or something in-between.</li>
@@ -633,6 +867,19 @@
     </section>
 
     <section id="people">
+      <svg class="sketch sketch-divider" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" style="left: auto; right: 10%;">
+        <!-- Decorative line sketch -->
+        <path d="M30 20 Q70 40, 110 20 T190 20"/>
+        <path d="M20 35 Q60 15, 100 35 T180 35"/>
+        <circle cx="25" cy="15" r="1.5" opacity="0.4"/>
+        <circle cx="195" cy="25" r="2" opacity="0.4"/>
+      </svg>
+
+      <!-- colourful squiggle in people -->
+      <svg class="sketch squiggle squiggle-4" viewBox="0 0 160 80" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 40 Q45 5, 85 35 T150 30" />
+      </svg>
+
       <div class="container">
         <h2>People & culture</h2>
         <div class="two-col">
@@ -668,6 +915,19 @@
     </section>
 
     <section id="practicalities">
+      <svg class="sketch sketch-divider" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+        <!-- Decorative line sketch -->
+        <path d="M10 25 Q50 5, 90 25 T170 25"/>
+        <path d="M15 45 Q55 25, 95 45 T175 45"/>
+        <circle cx="12" cy="20" r="2" opacity="0.4"/>
+        <circle cx="188" cy="30" r="1.5" opacity="0.4"/>
+      </svg>
+
+      <!-- colourful squiggle in practicalities -->
+      <svg class="sketch squiggle squiggle-3" viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 50 Q50 10, 100 40 T195 35" />
+      </svg>
+
       <div class="container">
         <h2>Practicalities</h2>
         <div class="grid">
@@ -694,7 +954,7 @@
           </div>
           <div class="grid-item">
             <div class="grid-label">money</div>
-            <div>free to stay</div>
+            <div>funded accommodation</div>
             <div class="grid-note">
               we share the cost of groceries and basics.
             </div>
@@ -718,6 +978,14 @@
     </section>
 
     <section id="apply">
+      <svg class="sketch sketch-divider" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" style="left: auto; right: 10%;">
+        <!-- Decorative line sketch -->
+        <path d="M20 30 Q60 10, 100 30 T180 30"/>
+        <path d="M10 45 Q50 25, 90 45 T170 45"/>
+        <circle cx="15" cy="25" r="1.5" opacity="0.4"/>
+        <circle cx="185" cy="40" r="2" opacity="0.4"/>
+      </svg>
+
       <div class="container">
         <h2>Apply</h2>
         <p>
@@ -779,7 +1047,15 @@
 
           <div class="field">
             <label>
-              anything else you want me to know? <span>(optional)</span>
+              roughly how long do you imagine staying at the house?
+              <span>(a rough guess is fine — dates or number of days)</span>
+            </label>
+            <input type="text" name="stay_length" id="stay_length" />
+          </div>
+
+          <div class="field">
+            <label>
+              anything else you want us to know? <span>(optional)</span>
             </label>
             <textarea name="extra" id="extra"></textarea>
           </div>
@@ -822,6 +1098,7 @@
         project: document.getElementById('project').value,
         why: document.getElementById('why').value,
         living: document.getElementById('living').value,
+        stay_length: document.getElementById('stay_length').value,
         extra: document.getElementById('extra').value
       };
       
@@ -830,11 +1107,12 @@
       let body = `Name: ${formData.name}\n`;
       body += `Email: ${formData.email}\n`;
       if (formData.location) body += `Location: ${formData.location}\n`;
+      if (formData.stay_length) body += `Planned length of stay: ${formData.stay_length}\n`;
       if (formData.links) body += `Links: ${formData.links}\n`;
       body += `\nWhat would you like to explore at the morph house?\n${formData.project}\n`;
       if (formData.why) {
         body += `\nWhy do you want to come to morph house?\n${formData.why}\n`;
-      }
+      }3
       if (formData.living) {
         body += `\nHow do you like to live with other people?\n${formData.living}\n`;
       }
