@@ -76,16 +76,6 @@
       }
     }
 
-    .eyebrow {
-      font-family: "Inter", sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 32px;
-      font-weight: 400;
-    }
-
     h1 {
       font-size: clamp(52px, 9vw, 84px);
       font-weight: 400;
@@ -102,10 +92,10 @@
       line-height: 1.6;
       max-width: 750px;
       font-style: italic;
-      background: rgba(255, 255, 255, 0.75);
-      display: inline-block;
-      padding: 8px 10px 6px;
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.04);
+      display: block;     /* no box, just text */
+      padding: 0;
+      background: transparent;
+      box-shadow: none;
     }
 
     /* Navigation */
@@ -648,126 +638,24 @@
       font-style: italic;
     }
 
-    /* Hand-drawn illustrations */
-    .sketch {
+    /* small house sketch icon */
+    .sketch-house {
       position: absolute;
-      opacity: 0.15;
-      pointer-events: none;
-      stroke: var(--text);
-      fill: none;
-      stroke-width: 1.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    header .sketch-house {
       top: 20%;
       right: 5%;
       width: 120px;
       height: 120px;
       opacity: 0.14;
+      pointer-events: none;
     }
 
     @media (max-width: 768px) {
-      header .sketch-house {
+      .sketch-house {
         width: 80px;
         height: 80px;
         top: 15%;
         right: 3%;
       }
-    }
-
-    .sketch-divider {
-      bottom: 0;
-      left: 10%;
-      width: 200px;
-      height: 60px;
-      opacity: 0.12;
-    }
-
-    @media (max-width: 768px) {
-      .sketch-divider {
-        width: 120px;
-        height: 40px;
-        left: 5%;
-      }
-    }
-
-    .sketch-corner {
-      top: 20px;
-      right: 20px;
-      width: 60px;
-      height: 60px;
-      opacity: 0.1;
-    }
-
-    .sidebar-box {
-      position: relative;
-    }
-
-    /* Colourful squiggles */
-    .squiggle {
-      position: absolute;
-      pointer-events: none;
-      opacity: 0.35;
-    }
-
-    .squiggle path {
-      stroke: currentColor;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      fill: none;
-    }
-
-    .squiggle-1 {
-      top: 65%;
-      left: -40px;
-      width: 160px;
-      height: 90px;
-      color: var(--accent-rose);
-      transform: rotate(-5deg);
-    }
-
-    .squiggle-2 {
-      top: 10%;
-      right: -50px;
-      width: 180px;
-      height: 100px;
-      color: var(--accent-blue);
-      transform: rotate(4deg);
-    }
-
-    .squiggle-3 {
-      bottom: -40px;
-      left: 50%;
-      width: 200px;
-      height: 90px;
-      color: var(--accent-gold);
-      transform: translateX(-50%) rotate(-3deg);
-    }
-
-    .squiggle-4 {
-      top: -30px;
-      left: 5%;
-      width: 160px;
-      height: 80px;
-      color: var(--accent-lilac);
-      transform: rotate(6deg);
-    }
-
-    @media (max-width: 768px) {
-      .squiggle-1,
-      .squiggle-2,
-      .squiggle-3,
-      .squiggle-4 {
-        opacity: 0.28;
-        transform: translateX(0) scale(0.8);
-      }
-      .squiggle-1 { left: -20px; }
-      .squiggle-2 { right: -30px; }
-      .squiggle-3 { bottom: -30px; }
-      .squiggle-4 { top: -20px; }
     }
   </style>
 </head>
@@ -786,22 +674,15 @@
 
   <header id="top">
     <div class="container">
-      <svg class="sketch sketch-house" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <!-- Simple house sketch -->
-        <path d="M30 70 L30 50 L50 35 L70 50 L70 70 Z"/>
-        <path d="M30 70 L70 70"/>
-        <path d="M50 35 L50 70"/>
-        <path d="M40 70 L40 60 L45 60 L45 70"/>
-        <path d="M55 70 L55 60 L60 60 L60 70"/>
-        <circle cx="50" cy="50" r="3" opacity="0.3"/>
+      <svg class="sketch-house" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30 70 L30 50 L50 35 L70 50 L70 70 Z" stroke="currentColor" fill="none" stroke-width="1.2"/>
+        <path d="M30 70 L70 70" stroke="currentColor" fill="none" stroke-width="1.2"/>
+        <path d="M50 35 L50 70" stroke="currentColor" fill="none" stroke-width="1.2"/>
+        <path d="M40 70 L40 60 L45 60 L45 70" stroke="currentColor" fill="none" stroke-width="1"/>
+        <path d="M55 70 L55 60 L60 60 L60 70" stroke="currentColor" fill="none" stroke-width="1"/>
+        <circle cx="50" cy="50" r="3" fill="currentColor" opacity="0.3"/>
       </svg>
 
-      <!-- colourful squiggle in header -->
-      <svg class="sketch squiggle squiggle-1" viewBox="0 0 160 90" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 60 Q40 10, 80 40 T155 35" />
-      </svg>
-
-      <div class="eyebrow">winter house experiment</div>
       <h1>The Morph House</h1>
       <p class="subtitle">
         22 december – 10 january · outskirts of east london · 4–5 people · funded accommodation · hosted by pranshul
@@ -811,19 +692,6 @@
 
   <main>
     <section id="about">
-      <svg class="sketch sketch-divider" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
-        <!-- Decorative line sketch -->
-        <path d="M10 30 Q50 10, 90 30 T170 30"/>
-        <path d="M20 40 Q60 20, 100 40 T180 40"/>
-        <circle cx="15" cy="25" r="2" opacity="0.4"/>
-        <circle cx="185" cy="35" r="1.5" opacity="0.4"/>
-      </svg>
-
-      <!-- colourful squiggle in about -->
-      <svg class="sketch squiggle squiggle-2" viewBox="0 0 180 100" xmlns="http://www.w3.org/2000/svg">
-        <path d="M10 50 Q55 5, 100 40 T170 35" />
-      </svg>
-
       <div class="container">
         <h2>What this is</h2>
         <div class="two-col">
@@ -845,11 +713,6 @@
           </div>
           <div>
             <div class="sidebar-box">
-              <svg class="sketch sketch-corner" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                <!-- Corner decoration -->
-                <path d="M10 10 L10 20 Q10 25, 15 25 L25 25"/>
-                <path d="M50 10 L50 20 Q50 25, 45 25 L35 25"/>
-              </svg>
               <h3>Some things you might do here</h3>
               <ul>
                 <li>work on drawings, writing, research, music, philosophy, maths, or something in-between.</li>
@@ -867,19 +730,6 @@
     </section>
 
     <section id="people">
-      <svg class="sketch sketch-divider" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" style="left: auto; right: 10%;">
-        <!-- Decorative line sketch -->
-        <path d="M30 20 Q70 40, 110 20 T190 20"/>
-        <path d="M20 35 Q60 15, 100 35 T180 35"/>
-        <circle cx="25" cy="15" r="1.5" opacity="0.4"/>
-        <circle cx="195" cy="25" r="2" opacity="0.4"/>
-      </svg>
-
-      <!-- colourful squiggle in people -->
-      <svg class="sketch squiggle squiggle-4" viewBox="0 0 160 80" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 40 Q45 5, 85 35 T150 30" />
-      </svg>
-
       <div class="container">
         <h2>People & culture</h2>
         <div class="two-col">
@@ -915,19 +765,6 @@
     </section>
 
     <section id="practicalities">
-      <svg class="sketch sketch-divider" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
-        <!-- Decorative line sketch -->
-        <path d="M10 25 Q50 5, 90 25 T170 25"/>
-        <path d="M15 45 Q55 25, 95 45 T175 45"/>
-        <circle cx="12" cy="20" r="2" opacity="0.4"/>
-        <circle cx="188" cy="30" r="1.5" opacity="0.4"/>
-      </svg>
-
-      <!-- colourful squiggle in practicalities -->
-      <svg class="sketch squiggle squiggle-3" viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 50 Q50 10, 100 40 T195 35" />
-      </svg>
-
       <div class="container">
         <h2>Practicalities</h2>
         <div class="grid">
@@ -978,14 +815,6 @@
     </section>
 
     <section id="apply">
-      <svg class="sketch sketch-divider" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" style="left: auto; right: 10%;">
-        <!-- Decorative line sketch -->
-        <path d="M20 30 Q60 10, 100 30 T180 30"/>
-        <path d="M10 45 Q50 25, 90 45 T170 45"/>
-        <circle cx="15" cy="25" r="1.5" opacity="0.4"/>
-        <circle cx="185" cy="40" r="2" opacity="0.4"/>
-      </svg>
-
       <div class="container">
         <h2>Apply</h2>
         <p>
@@ -1112,7 +941,7 @@
       body += `\nWhat would you like to explore at the morph house?\n${formData.project}\n`;
       if (formData.why) {
         body += `\nWhy do you want to come to morph house?\n${formData.why}\n`;
-      }3
+      }
       if (formData.living) {
         body += `\nHow do you like to live with other people?\n${formData.living}\n`;
       }
