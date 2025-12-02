@@ -766,10 +766,10 @@
               people writing at the kitchen table, reading on the sofa, playing with code or paint,
               going for cold walks, and going down rabbit holes together.
             </p>
-	    <p>
-	      join us at the morph house for however long you can: a week, a couple of days or even for an evening! we would love to have you.
+            <p>
+              join us at the morph house for however long you can: a week, a couple of days or even for an evening! we would love to have you.
               <br> <strong>if you want to visit for a day, <a href="mailto:pranshulbohra@gmail.com">email me!</a></strong>
-	    </p>
+            </p>
             <p class="muted">
               there is no strict programme. just gentle structure, shared meals, and a group of people each
               tending to something that matters to them.
@@ -810,8 +810,8 @@
             i've been to a couple of retreats for the buddhist meditation
             <a href="https://www.dhamma.org/" target="_blank" rel="noopener noreferrer">vipassana</a>.
           </p>
-	  <p>
-	  i'm really excited to meet you all very soon and see what we make together!
+          <p>
+          i'm really excited to meet you all very soon and see what we make together!
           </p>
         </div>
       </div>
@@ -914,7 +914,8 @@
           <input type="hidden" name="_subject" value="Morph House Application">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_next" value="#apply">
+          <!-- THIS is the important fix -->
+          <input type="hidden" name="_next" value="https://morphhouse.vercel.app/#apply">
           <div class="field">
             <label>
               name <span>(required)</span>
@@ -1013,7 +1014,7 @@
   <script>
     // Show success message when returning from form submission
     document.addEventListener('DOMContentLoaded', function() {
-      // Check if we're returning from form submission
+      // If FormSubmit sent us back to /#apply
       if (window.location.hash === '#apply') {
         const formMessage = document.getElementById('form-message');
         if (formMessage) {
@@ -1023,21 +1024,7 @@
           }, 300);
         }
       }
-      
-      // Also show message on form submit (before redirect)
-      const form = document.getElementById('application-form');
-      if (form) {
-        form.addEventListener('submit', function() {
-          setTimeout(function() {
-            const formMessage = document.getElementById('form-message');
-            if (formMessage) {
-              formMessage.style.display = 'block';
-            }
-          }, 100);
-        });
-      }
     });
   </script>
 </body>
 </html>
- 
